@@ -40,3 +40,67 @@
 .read-the-docs {
   color: #888;
 }
+
+#app-root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+header {
+  margin-bottom: 1rem;
+}
+.subtitle {
+  color: #aaa;
+  margin-top: 0.25rem;
+}
+
+.contacts .controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.delete-btn {
+  background: #eee;
+  color: #111;
+  border: 1px solid #ccc;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+.contact-row {
+  margin: 0.25rem 0;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111;
+}
+
+
+.logo { filter: none; }

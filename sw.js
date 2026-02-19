@@ -1,4 +1,3 @@
-// Service Worker con estrategia híbrida
 const CACHE_NAME = 'challenge01-v1';
 const urlsToCache = [
   '/',
@@ -6,7 +5,6 @@ const urlsToCache = [
   '/manifest.json',
 ];
 
-// Instalación del SW
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -16,7 +14,6 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Activación del SW - limpiar cachés antiguos
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -32,12 +29,10 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch - Estrategia híbrida
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Estrategia para assets (JS, CSS, imágenes) - Cache First
   if (request.method === 'GET' && 
       (request.url.includes('/assets/') || 
        request.url.includes('.js') || 
@@ -47,7 +42,6 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       caches.match(request).then(response => {
         return response || fetch(request).then(response => {
-          // Guardar en cache nuevos assets
           if (response && response.status === 200) {
             const responseToCache = response.clone();
             caches.open(CACHE_NAME).then(cache => {
@@ -57,12 +51,10 @@ self.addEventListener('fetch', event => {
           return response;
         });
       }).catch(() => {
-        // Si falla, intentar desde caché
         return caches.match(request);
       })
     );
   }
-  // Estrategia para HTML - Network First
   else if (request.method === 'GET' && 
            (request.url.includes('.html') || url.pathname === '/')) {
     event.respondWith(
@@ -81,7 +73,6 @@ self.addEventListener('fetch', event => {
         })
     );
   }
-  // Otros tipos de request - Network First
   else {
     event.respondWith(
       fetch(request)

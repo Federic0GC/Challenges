@@ -10,5 +10,4 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-// Registrar Service Worker para PWA
 registerServiceWorker()

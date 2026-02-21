@@ -6,7 +6,7 @@ function App() {
   return (
     <div id="app-root">
       <header>
-        <h1>Challenge01 Federico Gonzalez</h1>
+        <h1>Challenge02 Por Federico Gonzalez</h1>
         <img src={contactListLogo} alt="Contact List Logo" className="logo" />
       </header>
 

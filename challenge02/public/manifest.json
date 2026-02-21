@@ -1,9 +1,9 @@
 {
-  "name": "Challenge01 Contact List",
+  "name": "Challenge02 Contact List",
   "short_name": "Contacts",
   "description": "Una aplicación de lista de contactos progresiva",
-  "start_url": "/Challenge-01-Federico/",
-  "scope": "/Challenge-01-Federico/",
+  "start_url": "/Challenge-02-Federico/",
+  "scope": "/Challenge-02-Federico/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#005a9c",

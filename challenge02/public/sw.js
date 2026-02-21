@@ -1,4 +1,4 @@
-const CACHE_NAME = 'challenge01-v1';
+const CACHE_NAME = 'challenge02-v1';
 const urlsToCache = [
   '/',
   '/index.html',

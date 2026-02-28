@@ -7,8 +7,11 @@ Este proyecto es una app de gestión de tareas hecha con Ionic React.
 A continuación se muestran capturas del funcionamiento de la app:
 
 ![Pantallazo en IONIC ANDROID](./imagenes_prueba/Captura%20de%20challenge%2003.JPG)
-![Pantallazo APK instalada en el celular](./imagenes_prueba/Aplicacion%20Task%20manager.JPG)
+
+![Pantallazo APK instalada en el celular](./imagenes_prueba/Aplicacion%20Task%20manager.png)
+
 ![Pantallazo en el celular](./imagenes_prueba/Imagen-celular-challenge-03.png)
+
 
 
 ## Cómo ejecutar la app base

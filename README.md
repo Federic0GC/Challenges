@@ -8,7 +8,7 @@ A continuación se muestran capturas del funcionamiento de la app:
 
 ![Pantallazo en IONIC ANDROID](./imagenes_prueba/Captura%20de%20challenge%2003.JPG)
 
-![Pantallazo del APK instalada en el celular](./imagenes_prueba/Aplicacion%20Task%20manager.png)
+![Pantallazo del APK instalada en el celular](./imagenes_prueba/Aplicacion%20de%20Task%20manager.png)
 
 ![Pantallazo en el celular](./imagenes_prueba/Imagen-celular-challenge-03.png)
 

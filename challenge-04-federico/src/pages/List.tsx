@@ -18,7 +18,7 @@ const List: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" style={{ background: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        <h2 style={{ textAlign: 'center' }}>Usuario Correcto, Bienvenido Federico</h2>
+        <h2 style={{ textAlign: 'center' }}>Credenciales Correctas, Bienvenido Federico</h2>
         <IonButton expand="block" onClick={handleLogout}>Cerrar sesión</IonButton>
       </IonContent>
     </IonPage>

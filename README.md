@@ -7,11 +7,13 @@
 
 Email: federico@medicare.com
 Contraseña: federico
-Recepcionista
+
+## Recepcionista
 
 Email: sandra@medicare.com
 Contraseña: recepcionista
-Médico
+
+## Médico
 
 Email: juan_david@medicare.com
 Contraseña: medico

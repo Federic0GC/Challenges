@@ -1,31 +1,23 @@
 {
-  "name": "Challenge02 Contact List",
-  "short_name": "Contacts",
-  "description": "Una aplicación de lista de contactos progresiva",
-  "start_url": "/Challenge-02-Federico/",
-  "scope": "/Challenge-02-Federico/",
+  "name": "MediCare+ Admin",
+  "short_name": "MediCare",
+  "description": "Administración web para clínica MediCare+",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#005a9c",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0C2340",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/contact-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "/contact-icon.svg",
+      "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "/contact-icon.svg",
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "type": "image/png"
     }
   ],
   "screenshots": [

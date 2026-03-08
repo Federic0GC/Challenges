@@ -11,7 +11,8 @@
 - Maria Camila Velez
 - Federico Gonzalez Cardenas
 
-## Perfil del doctor
+## Perfil del doctor 
+## Usamos el perfil medico de la PWA de MediCare+
 - Juan David
 - Clínica Imbanaco
 - Neurólogo

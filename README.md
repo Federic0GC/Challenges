@@ -1,17 +1,6 @@
-# Visitas Médicas Examen 01
+# APP Visitas Médicas Examen 01 parte 2
 
-Aplicación clínica básica desarrollada en Ionic React. Permite gestionar visitas médicas, pacientes y perfil del doctor, con persistencia local y navegación por tabs.
-
-## Descripción
-
-Esta app simula la agenda diaria de un médico, mostrando visitas, pacientes y perfil personal. Incluye:
-- Login con credenciales mockeadas
-- Tabs para Visitas, Pacientes y Perfil
-- Detalle de visita y registro de receta
-- Persistencia en localStorage
-- Avatar personalizado y datos del doctor
-
-## Credenciales de ingreso
+## Credenciales 
 
 - **Usuario:** juan_david@medicare.com
 - **Contraseña:** medico
@@ -27,10 +16,5 @@ Esta app simula la agenda diaria de un médico, mostrando visitas, pacientes y p
 - Clínica Imbanaco
 - Neurólogo
 
----
-Para iniciar la app, ejecuta:
 
-```
-ionic serve
-```
 

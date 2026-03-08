@@ -27,11 +27,13 @@ Contraseña: medico
 
 <img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/2f0b2d65-dfb6-436a-a643-bb95e5dd76e9" />
 
-<img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/4864689f-3837-43bd-a212-b4f33ac3c3b9" />
-
 ## A continuacion podemos visualizar que tanto la PWA con netify como la APP con Ionic se instalaron correctamente como APPs Moviles
 
 <img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/3e9de873-904b-49b6-8b6e-0b61b85015fb" />
+
+
+
+
 
 
 

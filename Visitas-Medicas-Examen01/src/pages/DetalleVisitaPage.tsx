@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton, IonInput, IonBadge } from '@ionic/react';
+import RecetaItem from '../components/RecetaItem';
 
 const DetalleVisitaPage: React.FC = () => {
   const [medicamento, setMedicamento] = useState('');
@@ -40,7 +41,7 @@ const DetalleVisitaPage: React.FC = () => {
             <IonBadge color="success">{receta.length}</IonBadge>
           </IonItem>
           {receta.map((med, idx) => (
-            <IonItem key={idx}>{med}</IonItem>
+            <RecetaItem key={idx} medicamento={med} />
           ))}
         </IonList>
         <IonButton expand="block" color="primary" onClick={finalizarVisita}>Finalizar visita</IonButton>

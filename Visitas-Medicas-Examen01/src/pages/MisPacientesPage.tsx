@@ -1,5 +1,6 @@
 import React from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList } from '@ionic/react';
+import PacienteCard from '../components/PacienteCard';
 
 const pacientes = [
   'Sofia Estrella',
@@ -18,9 +19,7 @@ const MisPacientesPage: React.FC = () => {
       <IonContent>
         <IonList>
           {pacientes.map((p, idx) => (
-            <IonItem key={idx}>
-              <IonLabel>{p}</IonLabel>
-            </IonItem>
+            <PacienteCard key={idx} nombre={p} />
           ))}
         </IonList>
       </IonContent>

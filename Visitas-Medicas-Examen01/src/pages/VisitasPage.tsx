@@ -1,5 +1,6 @@
 import React from 'react';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItemSliding, IonItem, IonItemOptions, IonItemOption, IonReorderGroup, IonSegment, IonSegmentButton, IonLabel, IonButton, IonBadge, IonAlert } from '@ionic/react';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonReorderGroup, IonSegment, IonSegmentButton, IonLabel, IonAlert } from '@ionic/react';
+import VisitaItem from '../components/VisitaItem';
 const visitasMock = [
   { id: 1, paciente: 'Sofia Estrella', estado: 'pendiente' },
   { id: 2, paciente: 'Miguel Duran Gamboa', estado: 'en camino' },
@@ -34,23 +35,7 @@ const VisitasPage: React.FC = () => {
         <IonReorderGroup disabled={false}>
           <IonList>
             {visitasMock.filter(v => v.estado === segment).map(v => (
-              <IonItemSliding key={v.id}>
-                <IonItem button detail href={`/tabs/visitas/${v.id}`}>
-                  <IonLabel>{v.paciente}</IonLabel>
-                  <IonBadge color={v.estado === 'pendiente' ? 'warning' : v.estado === 'en camino' ? 'primary' : 'success'}>{v.estado}</IonBadge>
-                </IonItem>
-                <IonItemOptions side="end">
-                  <IonItemOption color="primary" onClick={() => {}}>
-                    En camino
-                  </IonItemOption>
-                  <IonItemOption color="danger" onClick={() => handleCancelar(v.id)}>
-                    Cancelar
-                  </IonItemOption>
-                  <IonItemOption color="medium" href={`/tabs/visitas/${v.id}`}>
-                    Ver detalle
-                  </IonItemOption>
-                </IonItemOptions>
-              </IonItemSliding>
+              <VisitaItem key={v.id} id={v.id} paciente={v.paciente} estado={v.estado} onCancelar={handleCancelar} />
             ))}
           </IonList>
         </IonReorderGroup>

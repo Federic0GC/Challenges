@@ -80,11 +80,11 @@ const App: React.FC = () => (
           </IonTabButton>
           <IonTabButton tab="edit" href="/edittasks">
             <IonIcon aria-hidden="true" icon={ellipse} />
-            <IonLabel>Editar</IonLabel>
+            <IonLabel>Edit</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/detailtasks">
             <IonIcon aria-hidden="true" icon={square} />
-            <IonLabel>Detalles</IonLabel>
+            <IonLabel>Details</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

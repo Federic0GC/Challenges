@@ -1,34 +1,22 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import TareaForm from '../components/TareaForm';
-import TareaList from '../components/TareaList';
+import { IonButton, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Tab1.css';
 
-import React, { useState } from 'react';
-
-interface Task {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import { useTasks } from '../hooks/useTasks';
 
 const Tab1: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const { logout } = useAuth();
+  const history = useHistory();
+  const { tasks } = useTasks();
 
-  const handleAddTask = (text: string) => {
-    setTasks(prev => [
-      ...prev,
-      { id: Date.now(), text, completed: false }
-    ]);
-  };
-
-  const handleCompleteTask = (id: number) => {
-    setTasks(prev => prev.map(task =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
-  };
-
-  const handleDeleteTask = (id: number) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
+  const handleLogout = async () => {
+    try {
+      await logout();
+      history.push('/login');
+    } catch {
+    }
   };
 
   return (
@@ -38,6 +26,9 @@ const Tab1: React.FC = () => {
           <IonTitle style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 'bold' }}>
             Administra tus tareas! Challenge 03 Federico
           </IonTitle>
+          <IonButton slot="end" onClick={handleLogout}>
+            Cerrar sesión
+          </IonButton>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -49,8 +40,27 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div style={{ padding: 16 }}>
-          <TareaForm onAdd={handleAddTask} />
-          <TareaList tasks={tasks} onComplete={handleCompleteTask} onDelete={handleDeleteTask} />
+          {tasks.length === 0 && (
+            <p style={{ textAlign: 'center', color: '#888', marginTop: 32, fontSize: '1.2rem' }}>
+              No hay tareas para mostrar.
+            </p>
+          )}
+          {tasks.length > 0 && (
+            <IonList>
+              {tasks.map(task => (
+                <IonItem key={task.id} lines="full">
+                  <IonLabel>
+                    <h2 style={{ fontSize: '1.3rem', marginBottom: 8 }}>
+                      {task.text}
+                    </h2>
+                    <p style={{ fontSize: '1.1rem' }}>
+                      Estado: {task.completed ? 'Completada' : 'Pendiente'}
+                    </p>
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
+          )}
         </div>
       </IonContent>
     </IonPage>

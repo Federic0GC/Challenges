@@ -1,4 +1,4 @@
-# Challenge 05 - APP Administrador de tareas + Firenase autenticacion para login y register 
+# Challenge 05 - APP Administrador de tareas + Firebase autenticacion para login y register 
 
 Este proyecto es una app de gestión de tareas hecha con Ionic React la cual permite la creacion y manejo de tareas, desde una pestaña de visualizacion, una de gestion de las tareas y otra que muestra con detalles informacion de la tarea, la autenticacion se hace mediante FireBase 
 

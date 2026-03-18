@@ -6,11 +6,11 @@ Este proyecto es una app de gestión de tareas hecha con Ionic React la cual per
 <img width="1600" height="831" alt="image" src="https://github.com/user-attachments/assets/caeed4f7-7506-44e3-8b97-693fa05875b9" />
 
 ## Pagina de creacion / editacion de las tareas
-<img width="1600" height="800" alt="image" src="https://github.com/user-attachments/assets/de821555-57a1-438b-a689-8b20462af016" />
-
+<img width="1600" height="836" alt="image" src="https://github.com/user-attachments/assets/8fd02e49-d4dc-4fe9-897b-32a3b89f68f5" />
 
 ## Pagina de detalles sobre las tareas creadas
-<img width="1600" height="794" alt="image" src="https://github.com/user-attachments/assets/206628f6-aec2-46aa-922a-7bcaa674b1e5" />
+<img width="1600" height="831" alt="image" src="https://github.com/user-attachments/assets/c4ab27a9-8d7a-462b-a453-a54e26d06a76" />
+
 
 
 

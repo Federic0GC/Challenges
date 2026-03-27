@@ -11,14 +11,14 @@ interface Params {
 const AddEditTask: React.FC = () => {
   const { id } = useParams<Params>();
   const isEdit = Boolean(id);
-  const { addTask, updateTask, getTaskById } = useTasks();
+  const { addTask, updateTask, getTaskById, isOnline } = useTasks();
   const history = useHistory();
   const [text, setText] = useState('');
   const { user } = useAuth();
 
   useEffect(() => {
     if (isEdit && id) {
-      const task = getTaskById(Number(id));
+      const task = getTaskById(id);
       if (task) {
         setText(task.text);
       }
@@ -30,7 +30,7 @@ const AddEditTask: React.FC = () => {
     if (!text.trim()) return;
 
     if (isEdit && id) {
-      updateTask(Number(id), text.trim());
+      updateTask(id, text.trim());
     } else {
       const createdByName = user?.displayName ?? null;
       const createdByEmail = user?.email ?? null;
@@ -56,7 +56,7 @@ const AddEditTask: React.FC = () => {
               onIonChange={e => setText(e.detail.value || '')}
             />
           </IonItem>
-          <IonButton expand="block" type="submit" style={{ marginTop: 16 }}>
+          <IonButton expand="block" type="submit" style={{ marginTop: 16 }} disabled={!isOnline}>
             {isEdit ? 'Guardar cambios' : 'Agregar tarea'}
           </IonButton>
         </form>

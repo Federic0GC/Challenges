@@ -14,12 +14,17 @@ import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import Contacts from './pages/Contacts';
+import Fruits from './pages/Fruits';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AddEditTask from './pages/AddEditTask';
 import TaskDetail from './pages/TaskDetail';
 import { AuthProvider } from './contexts/AuthContext';
 import { TasksProvider } from './contexts/TasksContext';
+import { NetworkProvider } from './contexts/NetworkContext';
+import { FruitsProvider } from './contexts/FruitsContext';
+import PrivateRoute from './components/PrivateRoute';
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -39,7 +44,9 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <AuthProvider>
+      <NetworkProvider>
       <TasksProvider>
+      <FruitsProvider>
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/login">
@@ -48,27 +55,15 @@ const App: React.FC = () => (
           <Route exact path="/register">
             <Register />
           </Route>
-          <Route exact path="/tasks">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tasks/new">
-            <AddEditTask />
-          </Route>
-          <Route exact path="/tasks/detail/:id">
-            <TaskDetail />
-          </Route>
-          <Route exact path="/tasks/:id/edit">
-            <AddEditTask />
-          </Route>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/edittasks">
-            <Tab2 />
-          </Route>
-          <Route path="/detailtasks">
-            <Tab3 />
-          </Route>
+          <PrivateRoute exact path="/tasks" component={Tab1} />
+          <PrivateRoute exact path="/tasks/new" component={AddEditTask} />
+          <PrivateRoute exact path="/tasks/detail/:id" component={TaskDetail} />
+          <PrivateRoute exact path="/tasks/:id/edit" component={AddEditTask} />
+          <PrivateRoute exact path="/contacts" component={Contacts} />
+          <PrivateRoute exact path="/fruits" component={Fruits} />
+          <PrivateRoute exact path="/tab1" component={Tab1} />
+          <PrivateRoute exact path="/edittasks" component={Tab2} />
+          <PrivateRoute path="/detailtasks" component={Tab3} />
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
@@ -88,7 +83,9 @@ const App: React.FC = () => (
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
+      </FruitsProvider>
       </TasksProvider>
+      </NetworkProvider>
       </AuthProvider>
     </IonReactRouter>
   </IonApp>

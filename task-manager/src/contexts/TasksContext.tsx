@@ -1,59 +1,57 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
+import { TaskDto, addTask as addTaskDb, deleteTask as deleteTaskDb, subscribeToTasks, toggleTask as toggleTaskDb, updateTaskText } from '../services/tasksService';
+import { useNetwork } from './NetworkContext';
 
-export interface Task {
-  id: number;
-  text: string;
-  completed: boolean;
-  createdByName?: string | null;
-  createdByEmail?: string | null;
-  createdAt?: string;
-}
+export interface Task extends TaskDto {}
 
 interface TasksContextValue {
   tasks: Task[];
-  addTask: (text: string, createdByName: string | null, createdByEmail: string | null) => void;
-  toggleTask: (id: number) => void;
-  deleteTask: (id: number) => void;
-  updateTask: (id: number, text: string) => void;
-  getTaskById: (id: number) => Task | undefined;
+  addTask: (text: string, createdByName: string | null, createdByEmail: string | null) => Promise<void>;
+  toggleTask: (id: string, completed: boolean) => Promise<void>;
+  deleteTask: (id: string) => Promise<void>;
+  updateTask: (id: string, text: string) => Promise<void>;
+  getTaskById: (id: string) => Task | undefined;
+  isOnline: boolean;
 }
 
 const TasksContext = createContext<TasksContextValue | undefined>(undefined);
 
 export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user } = useAuth();
+  const { isOnline } = useNetwork();
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTask = (text: string, createdByName: string | null, createdByEmail: string | null) => {
-    setTasks(prev => [
-      ...prev,
-      {
-        id: Date.now(),
-        text,
-        completed: false,
-        createdByName,
-        createdByEmail,
-        createdAt: new Date().toISOString(),
-      },
-    ]);
+  useEffect(() => {
+    if (!user) {
+      setTasks([]);
+      return;
+    }
+    const unsubscribe = subscribeToTasks(user.uid, setTasks);
+    return () => unsubscribe();
+  }, [user]);
+
+  const addTask = async (text: string, createdByName: string | null, createdByEmail: string | null) => {
+    if (!user || !isOnline) return;
+    await addTaskDb(user.uid, text, createdByName, createdByEmail);
   };
 
-  const toggleTask = (id: number) => {
-    setTasks(prev =>
-      prev.map(task => (task.id === id ? { ...task, completed: !task.completed } : task))
-    );
+  const toggleTask = async (id: string, completed: boolean) => {
+    if (!user || !isOnline) return;
+    await toggleTaskDb(user.uid, id, completed);
   };
 
-  const deleteTask = (id: number) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
+  const deleteTask = async (id: string) => {
+    if (!user || !isOnline) return;
+    await deleteTaskDb(user.uid, id);
   };
 
-  const updateTask = (id: number, text: string) => {
-    setTasks(prev =>
-      prev.map(task => (task.id === id ? { ...task, text } : task))
-    );
+  const updateTask = async (id: string, text: string) => {
+    if (!user || !isOnline) return;
+    await updateTaskText(user.uid, id, text);
   };
 
-  const getTaskById = (id: number) => tasks.find(task => task.id === id);
+  const getTaskById = (id: string) => tasks.find(task => task.id === id);
 
   const value: TasksContextValue = {
     tasks,
@@ -62,6 +60,7 @@ export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     deleteTask,
     updateTask,
     getTaskById,
+    isOnline,
   };
 
   return <TasksContext.Provider value={value}>{children}</TasksContext.Provider>;

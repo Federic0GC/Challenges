@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 
 const Tab2: React.FC = () => {
-  const { tasks, addTask, deleteTask } = useTasks();
+  const { tasks, addTask, deleteTask, isOnline } = useTasks();
   const history = useHistory();
   const { user } = useAuth();
   const [newText, setNewText] = useState('');
@@ -20,7 +20,7 @@ const Tab2: React.FC = () => {
     setNewText('');
   };
 
-  const goToEdit = (id: number) => {
+  const goToEdit = (id: string) => {
     history.push(`/tasks/${id}/edit`);
   };
 
@@ -40,7 +40,7 @@ const Tab2: React.FC = () => {
             onIonChange={e => setNewText(e.detail.value || '')}
           />
         </IonItem>
-        <IonButton expand="block" onClick={handleAdd} style={{ marginTop: 12, marginBottom: 24 }}>
+        <IonButton expand="block" onClick={handleAdd} style={{ marginTop: 12, marginBottom: 24 }} disabled={!isOnline}>
           Agregar tarea
         </IonButton>
 
@@ -53,7 +53,7 @@ const Tab2: React.FC = () => {
                   <h2>{task.text}</h2>
                   <p>Estado: {task.completed ? 'Completada' : 'Pendiente'}</p>
                 </IonLabel>
-                <IonButton slot="end" size="small" onClick={() => goToEdit(task.id)}>
+                <IonButton slot="end" size="small" onClick={() => goToEdit(task.id)} disabled={!isOnline}>
                   Editar
                 </IonButton>
                 <IonButton
@@ -61,6 +61,7 @@ const Tab2: React.FC = () => {
                   size="small"
                   color="danger"
                   onClick={() => deleteTask(task.id)}
+                  disabled={!isOnline}
                 >
                   Eliminar
                 </IonButton>

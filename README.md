@@ -1,6 +1,13 @@
 # CHALLENGE 06 - APP Integracion de base de datos en tiempo real con Firebase para taeras, guardado de contactos con Firestore, y Gestor de alimentos Dexie
 
+OJO se trabajo esta nueva app con una plantilla de un challenge anterior, la cual nos permitio centrarnos en las novedades solicitades asi como e las nuevas integraciones trabajadas en esta APP
+
+<img width="1600" height="833" alt="image" src="https://github.com/user-attachments/assets/15b1164a-c1bf-4660-baec-a901bdc03248" />
+
 Este proyecto es una app la cual es multivariada, por una parte se sigue trabajando la logica de guardado de tareas u la manipulacion de estas pero con el añadido de de guardar esas tareas en la base de datos de tiempo real de firebase de la siguiente manera:
+
+<img width="1600" height="830" alt="image" src="https://github.com/user-attachments/assets/5a34c790-eabd-4ed1-83c6-bb317bea4433" />
+
 
 Ejemplo de cómo se guarda una tarea en la Realtime Database:
 
@@ -33,10 +40,14 @@ Ejemplo de documento en la colección `contacts`:
 }
 ```
 
+<img width="1600" height="835" alt="image" src="https://github.com/user-attachments/assets/99fe53f0-8adc-406a-891f-671180329a50" />
+
 
 ## Gestion de alimentos "frutas" en un almacenamiento local con Dexie
 
 Para las frutas usamos dexie sobre indexedDB, esto nos permite guardar la informacion directamente en el dispositivo del usuario sin depender de internet guardandose cada alimento con su nombre, cantidad y un indicador de si es el favorito del suario, esta informacion estara persistente aunque se cierre y vuelva a abrir la app para el usuario
+
+<img width="1600" height="830" alt="image" src="https://github.com/user-attachments/assets/7b4e896f-a79a-49ec-894b-7274018cc491" />
 
 
 ## Cómo ejecutar la app 

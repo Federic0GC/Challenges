@@ -49,6 +49,9 @@ Para las frutas usamos dexie sobre indexedDB, esto nos permite guardar la inform
 
 <img width="1600" height="830" alt="image" src="https://github.com/user-attachments/assets/7b4e896f-a79a-49ec-894b-7274018cc491" />
 
+<img width="1600" height="832" alt="image" src="https://github.com/user-attachments/assets/77792443-a799-4128-b4ca-cd366d9f902c" />
+
+
 
 ## Cómo ejecutar la app 
 

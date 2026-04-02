@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "939928886506",
+    "project_id": "challenge07-5ae84",
+    "storage_bucket": "challenge07-5ae84.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939928886506:android:7e30fe19cc5da14e888b93",
+        "android_client_info": {
+          "package_name": "com.fedeg.challenge07"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWuEjIj4IGs6NGgN1sb2ABeMAbyPixpCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

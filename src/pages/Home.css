@@ -1,0 +1,19 @@
+ .home-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.home-button {
+	--background: var(--ion-color-light);
+	--color: var(--ion-color-dark);
+	--border-radius: 8px;
+	--box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+	font-weight: 500;
+	letter-spacing: 0.03em;
+}
+
+.home-button::part(native) {
+	justify-content: center;
+}
+

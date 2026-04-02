@@ -3,7 +3,8 @@
 Se realizo una nueva APP en la cual se muestra el uso de varios sensores/APIs de Capacitor mediante una página que tiene cada sesor, el cual se accede mediante un boton en la pagina de inicio
 
 ## Pagina de inicio / Home Page
-<img width="1600" height="862" alt="image" src="https://github.com/user-attachments/assets/4fc1c50b-84d9-4737-8d9e-2f1262c5c005" />
+<img width="1920" height="996" alt="image" src="https://github.com/user-attachments/assets/cea81dee-b53c-458d-b279-5a33ac44b5fb" />
+
 
 ## Visualizacion desde Android Studio
 <img width="1600" height="862" alt="image" src="https://github.com/user-attachments/assets/231bec7a-9707-4466-9329-129ed19708be" />

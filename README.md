@@ -12,7 +12,7 @@ Aplicación móvil creada con Ionic React + Capacitor para geolocalización, map
 
 # Lugares cercanos encontrados en la APP
 <img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/497ea4eb-b435-4dc6-899d-679453a1b285" />
-##3 Aqui sucedio una complicacion ya que la mayoria de lugares mostrados no se les pudo extraer un nombre y en esos casos se les colocaba un nombre general
+## Aqui sucedio una complicacion ya que la mayoria de lugares mostrados no se les pudo extraer un nombre y en esos casos se les colocaba un nombre general
 
 # Lugares cercanos encontrados en la APP, vista desde el PC que nos muestra mas lugares con sus nombres 
 <img width="1600" height="778" alt="image" src="https://github.com/user-attachments/assets/31da81af-6519-4908-adf4-7badfe0684a4" />

@@ -1,0 +1,13 @@
+:root {
+  --ion-color-primary: #0f766e;
+  --ion-color-primary-rgb: 15, 118, 110;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-secondary: #f97316;
+  --ion-color-secondary-rgb: 249, 115, 22;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-background-color: #07111f;
+  --ion-text-color: #e5eefb;
+  --ion-card-background: rgba(10, 19, 34, 0.86);
+  --ion-toolbar-background: rgba(7, 17, 31, 0.88);
+  --ion-item-background: transparent;
+}

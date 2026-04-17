@@ -1,0 +1,7 @@
+{
+  "name": "Challenge-08",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

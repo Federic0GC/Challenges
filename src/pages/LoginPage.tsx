@@ -26,7 +26,7 @@ const LoginPage = () => {
       await signInWithEmailAndPassword(auth, email.trim(), password);
       history.replace('/home');
     } catch {
-      present({ message: 'No se pudo iniciar sesion', duration: 1700, color: 'danger' });
+      present({ message: 'No pude iniciar sesion, proba otra vez', duration: 1700, color: 'danger' });
     }
   };
 
@@ -34,7 +34,7 @@ const LoginPage = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Misiones y Desafios!!!, Examen - 02</IonTitle>
+            <IonTitle>Misiones y Desafios - Examen 02</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">

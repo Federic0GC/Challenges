@@ -61,7 +61,7 @@ export const MissionList = ({
           disabled={missions.find((m) => m.id === 2)?.completed || moveTracking}
           onClick={onMission2}
         >
-          {moveTracking ? 'Detectando movimiento...' : 'Iniciar geolocalizacion'}
+          {moveTracking ? 'Buscando si te mueves...' : 'Empezar geolocalizacion'}
         </IonButton>
 
         <IonButton
@@ -70,7 +70,7 @@ export const MissionList = ({
           disabled={!mission2Done || missions.find((m) => m.id === 3)?.completed || stillTracking}
           onClick={onMission3}
         >
-          {stillTracking ? 'Verificando quietud...' : 'Reto de quedarse quieto'}
+          {stillTracking ? 'Mirando si sigues quieto...' : 'Quedarme quieto 10s'}
         </IonButton>
       </IonCardContent>
     </IonCard>

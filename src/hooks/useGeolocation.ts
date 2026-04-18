@@ -4,41 +4,14 @@ type PositionHandler = (position: Position) => void | Promise<void>;
 type ErrorHandler = (error: Error) => void | Promise<void>;
 
 const normalizeGeoError = (error: unknown): Error => {
-  if (error instanceof Error) {
-    const lower = error.message.toLowerCase();
-    if (lower.includes('location services are not enabled') || lower.includes('settings') || lower.includes('provider')) {
-      return new Error('Activa la ubicacion del telefono');
-    }
-    if (lower.includes('denied') || lower.includes('permission')) {
-      return new Error('Permiso de ubicacion denegado');
-    }
-    return error;
+  const text = String(error instanceof Error ? error.message : error ?? '').toLowerCase();
+  if (text.includes('denied') || text.includes('permission')) {
+    return new Error('Permiso de ubicacion denegado');
   }
-
-  if (typeof error === 'string') {
-    const lower = error.toLowerCase();
-    if (lower.includes('location services are not enabled') || lower.includes('settings') || lower.includes('provider')) {
-      return new Error('Activa la ubicacion del telefono');
-    }
-    if (lower.includes('denied') || lower.includes('permission')) {
-      return new Error('Permiso de ubicacion denegado');
-    }
-    return new Error(error);
+  if (text.includes('location services are not enabled') || text.includes('provider')) {
+    return new Error('Activa la ubicacion del telefono');
   }
-
-  if (typeof error === 'object' && error && 'message' in error) {
-    const message = String((error as { message: unknown }).message ?? '');
-    const lower = message.toLowerCase();
-    if (lower.includes('location services are not enabled') || lower.includes('settings') || lower.includes('provider')) {
-      return new Error('Activa la ubicacion del telefono');
-    }
-    if (lower.includes('denied') || lower.includes('permission')) {
-      return new Error('Permiso de ubicacion denegado');
-    }
-    return new Error(message || 'No se pudo iniciar la geolocalizacion');
-  }
-
-  return new Error('No se pudo iniciar la geolocalizacion');
+  return new Error('No se pudo iniciar geolocalizacion');
 };
 
 export const useGeolocation = () => {

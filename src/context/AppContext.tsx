@@ -3,11 +3,11 @@ import { User, onAuthStateChanged, signOut } from 'firebase/auth';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Position } from '@capacitor/geolocation';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { LocalNotifications } from '@capacitor/local-notifications';
 import { auth } from '../firebase/config';
 import { getProgressFromFirebase, saveProgressToFirebase } from '../firebase/progress';
 import { Mission, ProgressData } from '../types';
 import { useGeolocation } from '../hooks/useGeolocation';
+import { notifyMissionProgress, requestMissionNotificationPermission } from '../utils/missionNotifications';
 
 type AppContextValue = {
   user: User | null;
@@ -118,51 +118,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const progressPercent = useMemo(() => Math.round((completedCount / missions.length) * 100), [completedCount, missions.length]);
 
   const requestNotificationPermission = async () => {
-    await LocalNotifications.requestPermissions();
-  };
-
-  const requestLocationPermission = async () => {
-    try {
-      await geolocation.requestPermission();
-    } catch {
-      return;
-    }
-  };
-
-  const notifyMissionCompletion = async (title: string, remaining: number) => {
-    await LocalNotifications.schedule({
-      notifications: [
-        {
-          id: Date.now() % 1000000,
-          title: 'Has completado una mision',
-          body: `${title} completada`
-        }
-      ]
-    });
-
-    if (remaining === 1) {
-      await LocalNotifications.schedule({
-        notifications: [
-          {
-            id: (Date.now() + 1) % 1000000,
-            title: 'Te falta 1 mision para completar',
-            body: 'Ya casi terminas todas las misiones'
-          }
-        ]
-      });
-    }
-
-    if (remaining === 0) {
-      await LocalNotifications.schedule({
-        notifications: [
-          {
-            id: (Date.now() + 2) % 1000000,
-            title: 'Completaste todas las misiones',
-            body: 'Excelente, terminaste todos los retos'
-          }
-        ]
-      });
-    }
+    await requestMissionNotificationPermission();
   };
 
   const vibrateMissionStart = async () => {
@@ -226,7 +182,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setPoints(nextPoints);
     await persistState(nextMissions, nextPoints, user);
     await vibrateMissionEnd();
-    await notifyMissionCompletion(target.title, remaining);
+    await notifyMissionProgress(target.title, remaining);
   };
 
   const loadInitialProgress = async (currentUser: User | null) => {
@@ -250,7 +206,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     requestNotificationPermission();
-    requestLocationPermission();
     const unsubscribe = onAuthStateChanged(auth, async (sessionUser) => {
       setUser(sessionUser);
       await loadInitialProgress(sessionUser);

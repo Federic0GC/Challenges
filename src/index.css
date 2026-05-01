@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
+
+    --primary: 211 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 199 89% 60%;
+
+    --secondary: 220 15% 94%;
+    --secondary-foreground: 220 25% 18%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 268 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 145 63% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 211 100% 50%;
+
+    --radius: 0.875rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(211 100% 50%), hsl(199 89% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(268 83% 58%), hsl(211 100% 55%));
+    --gradient-record: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 90% 55%));
+    --gradient-bg: linear-gradient(180deg, hsl(220 20% 98%), hsl(220 25% 94%));
+
+    --shadow-sm: 0 1px 2px hsl(220 25% 12% / 0.06);
+    --shadow-md: 0 4px 16px hsl(220 25% 12% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(211 100% 50% / 0.18);
+    --shadow-glow: 0 0 32px hsl(211 100% 60% / 0.4);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 220 28% 8%;
+    --foreground: 220 15% 95%;
+    --card: 220 25% 12%;
+    --card-foreground: 220 15% 95%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 15% 95%;
+    --primary: 211 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 220 15% 95%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 268 83% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 211 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+}
+
+@layer components {
+  .ion-page {
+    @apply min-h-screen flex flex-col;
+    background: var(--gradient-bg);
+  }
+  .ion-header {
+    @apply sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-border/50;
+  }
+  .ion-toolbar {
+    @apply flex items-center justify-between px-5 h-14;
+  }
+  .ion-title {
+    @apply text-lg font-semibold tracking-tight;
+  }
+  .ion-content {
+    @apply flex-1 overflow-y-auto px-5 py-6 pb-28;
+  }
+  .ion-card {
+    @apply bg-card rounded-[var(--radius)] p-5 shadow-[var(--shadow-md)] border border-border/40;
+  }
+  .ion-tab-bar {
+    @apply fixed bottom-0 left-0 right-0 bg-background/90 backdrop-blur-xl border-t border-border/50 flex items-center justify-around h-20 z-40;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@keyframes pulse-record {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 hsl(0 84% 60% / 0.6); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 24px hsl(0 84% 60% / 0); }
+}
+.animate-pulse-record { animation: pulse-record 1.4s ease-in-out infinite; }
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.4s ease-out; }
